@@ -29,31 +29,36 @@ A charming web-based 2D Toy Picker claw crane game featuring authentic rigid-bod
 | **Toggle Music** | Click `🎵 Music` | Tap Music Button |
 | **Toggle Sound** | Click `🔊 Sound` | Tap Sound Button |
 
-## 🌟 Toy Catalogue & Rarity Tiers (17 Unique Plushies)
+## 🌟 Toy Catalogue & Rarity Tiers (29 Unique Plushies)
 
-### 🟢 Common (★☆☆)
-- **Honey Bear**: *Loves warm honey and cozy hugs.*
-- **Rubber Ducky**: *Always ready for bath time splashing!*
-- **Fluffy Bunny**: *Gentle twitchy nose and ultra soft fur.*
-- **Cuddle Penguin**: *Waddles with joy when holding a pebble.*
-- **Tiny Froggie**: *Ribbit! Expert fly catcher and lilypad lounger.*
-- **Matcha Dino**: *Tiny stomper who enjoys warm herbal tea and clover fields.*
+### 🦫 10 Unique Capybara Toys
+1. **Cool Guy Capybara (★★☆)**: *Super chill with retro blue shades and double thumbs up! 👍😎👍*
+2. **Yuzu Zen Capybara (★☆☆)**: *Master of ultimate relaxation with a juicy yuzu orange on its head. 🍊*
+3. **Capy & Duck Pal (★★★)**: *Best buddies with a cozy red winter scarf and baby duckling on top. 🐥*
+4. **Onsen Spa Capybara (★★☆)**: *Soaking in a warm hot spring with a folded spa towel. ♨️*
+5. **Bakery Capybara (★☆☆)**: *Chief pastry chef holding a fresh buttery croissant. 🥐*
+6. **Strawberry Capybara (★★☆)**: *Sporting a fresh red strawberry hat with cute seed dots. 🍓*
+7. **Froggy Raincoat Capy (★☆☆)**: *Splashing in puddles wearing a froggy hooded raincoat. 🐸*
+8. **Donut Float Capybara (★★☆)**: *Floating gently inside a pink strawberry sprinkle donut ring. 🍩*
+9. **Star Wizard Capybara (★★★)**: *Casts spells of infinite chillness with a starry wizard hat. 🧙‍♂️✨*
+10. **Boba Milk Tea Capybara (★★★)**: *Sipping brown sugar boba milk tea with chewy tapioca pearls. 🧋*
 
-### 🔵 Rare (★★☆)
-- **Chill Capybara**: *Ok I pull up! Master of ultimate zen with an orange on head.* 🍊
-- **Boba Axolotl**: *Sweet as milk tea, with extra chewy brown sugar pearls.* 🧋
-- **Calico Kitten**: *Purrs at 40Hz and loves sunny windowsills.*
-- **Shiba Inu**: *Such fluff, very loyal, wow plushie.*
-- **Magic Shroom**: *Glows faintly beneath enchanted forest canopies.*
-- **Starry Cloud**: *Floats on gentle dreams and stardust breezes.*
-- **Octo Plush**: *Has eight arms for holding eight snacks at once.*
+### 🐱 10 Unique Cat Toys
+1. **Calico Kitten (★☆☆)**: *Classic tricolor calico with emerald eyes and whiskers. 🐱*
+2. **Chonky Orange Tabby (★☆☆)**: *100% fluff, 0% thoughts, 1000% love! 🐾*
+3. **Bread Toast Cat (★☆☆)**: *Stuck its head right through a slice of golden buttered toast! 🍞*
+4. **Midnight Witch Cat (★★☆)**: *Sleek black kitten with glowing gold eyes and purple ribbon bell. 🐈‍⬛*
+5. **Siamese Princess (★★☆)**: *Elegant chocolate-point mask with sparkling sapphire eyes. 💎*
+6. **Neko Salmon Sushi (★★☆)**: *White kitten wrapped in nori seaweed with salmon sashimi on top. 🍣*
+7. **Matcha Boba Cat (★★☆)**: *Pastel matcha cat enjoying cold boba tea with cat-shaped pearls. 🍵*
+8. **Cosmic Astro-Cat (★★★)**: *Explores the Milky Way in a glowing astronaut bubble helmet. 🚀🌌*
+9. **Shark Costume Kitty (★★★)**: *Ferociously cuddly kitten wearing a shark suit with teeth and fin! 🦈*
+10. **Sunflower Kitty (★★★)**: *Radiant golden kitten blooming with cheerful sunflower petals! 🌻*
 
-### 🟡 Legendary (★★★)
-- **Capy & Duck Pal**: *Best buddies exploring the world together in cozy harmony.* 🐥
-- **Golden Dragon**: *Legendary guardian of ancient treasure vaults.*
-- **Rainbow Unicorn**: *Spreads prismatic rainbows wherever it gallops.*
-- **Royal Mystery Egg**: *Crowned with jewels, holds mythical surprises.*
-- **Cosmic Astro-Cat**: *Explores the Milky Way on moonbeams and purrs.*
+### 🧸 9 Classic Arcade Plushies
+- **Honey Bear (★☆☆)**, **Rubber Ducky (★☆☆)**, **Fluffy Bunny (★☆☆)**, **Cuddle Penguin (★☆☆)**
+- **Magic Shroom (★★☆)**, **Starry Cloud (★★☆)**
+- **Golden Dragon (★★★)**, **Rainbow Unicorn (★★★)**, **Royal Mystery Egg (★★★)**
 
 ## 🚀 How to Run
 

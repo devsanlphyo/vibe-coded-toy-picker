@@ -82,9 +82,14 @@ class CollectionManager {
 
         grid.innerHTML = '';
 
-        const filtered = filter === 'all' 
-            ? catalogue 
-            : catalogue.filter(t => t.rarity === filter);
+        let filtered = catalogue;
+        if (filter === 'capybara') {
+            filtered = catalogue.filter(t => t.category === 'capybara');
+        } else if (filter === 'cat') {
+            filtered = catalogue.filter(t => t.category === 'cat');
+        } else if (filter !== 'all') {
+            filtered = catalogue.filter(t => t.rarity === filter);
+        }
 
         filtered.forEach(toy => {
             const count = this.data.unlocked[toy.id] || 0;
