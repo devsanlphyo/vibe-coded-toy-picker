@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cozy Toy Picker 🧸 2D Arcade Claw Machine</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Matter.js Physics Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+</head>
+<body>
+    <div class="game-wrapper">
+        <!-- Arcade Wooden Cabinet Frame -->
+        <div class="cabinet-frame">
+            <!-- Marquee Header -->
+            <div class="cabinet-marquee">
+                <div class="marquee-title">
+                    <span class="marquee-badge">Arcade</span>
+                    <h1>Cozy Toy Picker</h1>
+                </div>
+                <div class="marquee-meta">
+                    <div class="token-pill">
+                        🪙 <span id="tokenCount">10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glass Window / Physics Viewport -->
+            <div class="canvas-container">
+                <canvas id="gameCanvas" width="540" height="620"></canvas>
+                <div id="slipToast" class="slip-toast">⚠️ Slipped! Watch Alignment & Sway</div>
+            </div>
+
+            <!-- Arcade Control Deck -->
+            <div class="control-deck">
+                <div class="action-row">
+                    <!-- Directional D-Pad -->
+                    <div class="dpad-group">
+                        <button id="btnLeft" class="arcade-btn dir-btn" title="Move Left (Left Arrow / A)">◀</button>
+                        <button id="btnRight" class="arcade-btn dir-btn" title="Move Right (Right Arrow / D)">▶</button>
+                    </div>
+
+                    <!-- Big Brass DROP Button -->
+                    <button id="btnDrop" class="arcade-btn drop-btn" title="Drop Claw (Spacebar / Down Arrow)">
+                        🎯 DROP CLAW
+                    </button>
+                </div>
+
+                <!-- Utility Tools & Modals -->
+                <div class="utility-row">
+                    <button id="difficultyBtn" class="arcade-btn util-btn mode-arcade" title="Toggle Difficulty Mode">
+                        🕹️ Mode: ARCADE
+                    </button>
+                    <button id="albumBtn" class="arcade-btn util-btn highlight">
+                        📖 Toy Album (<span id="collectionHeaderCount">0/17</span>)
+                    </button>
+                    <button id="refillBtn" class="arcade-btn util-btn">
+                        🔄 Restock
+                    </button>
+                    <button id="insertCoinBtn" class="arcade-btn util-btn">
+                        🪙 +5 Coins
+                    </button>
+                    <button id="musicToggle" class="arcade-btn util-btn muted">
+                        🎵 Music: OFF
+                    </button>
+                    <button id="soundToggle" class="arcade-btn util-btn">
+                        🔊 Sound: ON
+                    </button>
+                </div>
+
+                <!-- Keyboard shortcuts guide -->
+                <div class="keyboard-hints">
+                    Controls: <kbd>◀</kbd> <kbd>▶</kbd> or <kbd>A</kbd> <kbd>D</kbd> to Move &bull; <kbd>Space</kbd> or <kbd>▼</kbd> to Drop
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prize Celebration Modal -->
+    <div id="winModal" class="modal-backdrop">
+        <div class="modal-card">
+            <div class="win-modal-body">
+                <div class="win-banner">✨ Prize Collected! ✨</div>
+                <div id="winThumbContainer" class="win-thumb-wrapper"></div>
+                <div id="winToyName" class="win-name">Chill Capybara</div>
+                <div>
+                    <span id="winToyRarity" class="win-rarity-pill rarity-rare">RARE PLUSHIE</span>
+                    <span id="winNewBadge" class="win-new-badge">NEW!</span>
+                </div>
+                <div id="winToyTagline" class="win-tagline">"Ok I pull up! Master of ultimate zen."</div>
+                <div id="winToyCount" style="font-size: 0.8rem; font-weight: 700; color: #7a5940;">Total Rescued: x1</div>
+                <button id="claimPrizeBtn" class="win-claim-btn">Keep Playing! 🎁</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toy Collection Album Modal -->
+    <div id="albumModal" class="modal-backdrop">
+        <div class="modal-card">
+            <div class="album-header">
+                <h2>📖 Plushie Collection Album</h2>
+                <button id="closeAlbumBtn" class="album-close-btn">&times;</button>
+            </div>
+
+            <div class="album-subbar">
+                <div class="progress-track">
+                    <div id="albumProgressFill" class="progress-fill"></div>
+                </div>
+                <div class="album-stats-row">
+                    <span id="albumProgressText">0 / 17 Discovered (0%)</span>
+                    <span id="albumTotalStats">Total Plushies Rescued: 0</span>
+                </div>
+            </div>
+
+            <div class="album-filter-tabs">
+                <button class="album-filter-btn active" data-filter="all">All (17)</button>
+                <button class="album-filter-btn" data-filter="common">Common (6)</button>
+                <button class="album-filter-btn" data-filter="rare">Rare (7)</button>
+                <button class="album-filter-btn" data-filter="legendary">Legendary (5)</button>
+            </div>
+
+            <div id="albumGrid" class="album-grid">
+                <!-- Dynamically generated collection cards -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts in Dependency Order -->
+    <script src="js/audio.js"></script>
+    <script src="js/toys.js"></script>
+    <script src="js/claw.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/collection.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
