@@ -19,7 +19,7 @@
 
         // Initialize Physics & Claw with slip callback
         physics = new PhysicsManager(canvas, onPrizeWon);
-        claw = new ClawController(physics.world, 85, 60, 460, onClawSlip);
+        claw = new ClawController(physics.world, 85, 60, 550, onClawSlip);
 
         // Setup Controls & UI Event Listeners
         setupInputHandlers();

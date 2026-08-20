@@ -3,7 +3,7 @@
  * Features realistic arcade physics, dynamic sway momentum, alignment precision, and rarity-based grip slipping.
  */
 class ClawController {
-    constructor(world, chuteX = 85, topY = 60, maxY = 460, onSlipCallback = null) {
+    constructor(world, chuteX = 85, topY = 60, maxY = 550, onSlipCallback = null) {
         this.world = world;
         this.chuteX = chuteX;
         this.topY = topY;
