@@ -53,20 +53,20 @@ class PhysicsManager {
         });
 
         // Prize chute separator divider (tall barrier wall between chute on left and toy bin on right)
-        const chuteDivider = Bodies.rectangle(125, 460, 14, 280, {
+        const chuteDivider = Bodies.rectangle(110, 470, 12, 260, {
             isStatic: true,
             friction: 0.3,
             render: { fillStyle: '#b8860b' }
         });
 
         // Top bumper rim on divider
-        const dividerBumper = Bodies.circle(125, 320, 8, {
+        const dividerBumper = Bodies.circle(110, 340, 8, {
             isStatic: true,
             friction: 0.2
         });
 
         // Chute funneled ramp (guides prize smoothly to exit)
-        const chuteRamp = Bodies.rectangle(40, 580, 80, 12, {
+        const chuteRamp = Bodies.rectangle(35, 580, 75, 12, {
             isStatic: true,
             angle: 0.35,
             friction: 0.2
@@ -104,7 +104,7 @@ class PhysicsManager {
         for (let i = 0; i < count; i++) {
             const template = getWeightedTemplate();
             // Stagger spawn over bin area
-            const startX = 150 + Math.random() * (this.width - 180);
+            const startX = 140 + Math.random() * (this.width - 170);
             const startY = 320 + (i % 5) * 45 + Math.random() * 20;
 
             const radius = template.radius || 26;
@@ -144,8 +144,8 @@ class PhysicsManager {
             if (!toy || toy.isCollected || !toy.body) continue;
 
             const pos = toy.body.position;
-            // Chute zone: x < 120 and y > 470
-            if (pos.x < 120 && pos.y > 470) {
+            // Chute zone: x < 110 and y > 460
+            if (pos.x < 110 && pos.y > 460) {
                 toy.isCollected = true;
 
                 // Remove from physics world
@@ -172,7 +172,7 @@ class PhysicsManager {
         // 1. Draw Prize Chute Wall & Barrier
         ctx.save();
         // Divider
-        const dividerGrad = ctx.createLinearGradient(118, 320, 132, 320);
+        const dividerGrad = ctx.createLinearGradient(104, 340, 116, 340);
         dividerGrad.addColorStop(0, '#5a3d16');
         dividerGrad.addColorStop(0.5, '#b8860b');
         dividerGrad.addColorStop(1, '#3b250c');
@@ -180,21 +180,21 @@ class PhysicsManager {
         ctx.strokeStyle = '#2b1a07';
         ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.roundRect(118, 320, 14, 280, 4);
+        ctx.roundRect(104, 340, 12, 260, 4);
         ctx.fill();
         ctx.stroke();
 
         // Brass Top Bumper Cap
         ctx.fillStyle = '#ffd700';
         ctx.beginPath();
-        ctx.arc(125, 320, 8, 0, Math.PI * 2);
+        ctx.arc(110, 340, 8, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
 
         // Chute Target Decal / Icon
         ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
         ctx.beginPath();
-        ctx.arc(68, 520, 32, 0, Math.PI * 2);
+        ctx.arc(58, 520, 30, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.strokeStyle = 'rgba(255, 215, 0, 0.4)';
@@ -203,11 +203,11 @@ class PhysicsManager {
         ctx.setLineDash([]);
 
         ctx.fillStyle = '#ffd700';
-        ctx.font = 'bold 12px "Segoe UI", sans-serif';
+        ctx.font = 'bold 11px "Segoe UI", sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText('PRIZE CHUTE', 68, 515);
+        ctx.fillText('PRIZE CHUTE', 58, 515);
         ctx.font = '18px sans-serif';
-        ctx.fillText('🎁', 68, 540);
+        ctx.fillText('🎁', 58, 540);
 
         // 2. Draw all Plushies
         this.toys.forEach(toy => {

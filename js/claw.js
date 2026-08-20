@@ -3,7 +3,7 @@
  * Features realistic arcade physics, dynamic sway momentum, alignment precision, and rarity-based grip slipping.
  */
 class ClawController {
-    constructor(world, chuteX = 85, topY = 60, maxY = 550, onSlipCallback = null) {
+    constructor(world, chuteX = 65, topY = 60, maxY = 550, onSlipCallback = null) {
         this.world = world;
         this.chuteX = chuteX;
         this.topY = topY;
@@ -15,9 +15,9 @@ class ClawController {
         this.y = topY;
         this.targetX = 280;
 
-        // Mechanics & constraints
-        this.minX = 75;
-        this.maxX = 480;
+        // Mechanics & constraints (Full horizontal reach across entire bin and chute)
+        this.minX = 60;
+        this.maxX = 514;
         this.speedX = 3.8;
         this.dropSpeed = 3.4;
         this.liftSpeed = 2.6;
@@ -259,21 +259,21 @@ class ClawController {
         let minDx = 999;
 
         // Alignment Tolerances by Difficulty:
-        // Cozy: 36px | Arcade: 20px | Master: 13px
-        const maxHorizTolerance = this.difficulty === 'cozy' ? 36 : (this.difficulty === 'arcade' ? 20 : 13);
-        const maxVertDistance = 38;
+        // Cozy: 42px | Arcade: 28px | Master: 18px
+        const maxHorizTolerance = this.difficulty === 'cozy' ? 42 : (this.difficulty === 'arcade' ? 28 : 18);
+        const maxVertDistance = 48;
 
         for (let t of toys) {
             if (!t.body) continue;
             const dx = Math.abs(t.body.position.x - tipX);
             const dy = t.body.position.y - (this.y + 20);
 
-            if (dx < maxHorizTolerance && dy >= -5 && dy < maxVertDistance) {
+            if (dx < maxHorizTolerance && dy >= -12 && dy < maxVertDistance) {
                 if (dx < minDx) {
                     minDx = dx;
                     bestToy = t;
                 }
-            } else if (dx >= maxHorizTolerance && dx < maxHorizTolerance + 18 && dy >= -5 && dy < maxVertDistance) {
+            } else if (dx >= maxHorizTolerance && dx < maxHorizTolerance + 18 && dy >= -12 && dy < maxVertDistance) {
                 // Off-center hit: Nudge the toy away!
                 Matter.Body.applyForce(t.body, t.body.position, {
                     x: Math.sign(t.body.position.x - tipX) * 0.005,
