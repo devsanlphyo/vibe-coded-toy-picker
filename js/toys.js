@@ -1,12 +1,87 @@
 /**
- * Toy Definitions and Vector Plushie Renderers
- * Massive 50-Toy Store Catalogue across 5 Thematic Categories:
- * 1. 🦫 Capybaras (10 Toys)
- * 2. 🐱 Cats (10 Toys)
- * 3. 🐶 Dogs & Puppies (10 Toys)
- * 4. 🐼 Forest & Wildlife (10 Toys)
- * 5. 🦄 Fantasy & Mythical (10 Toys)
+ * Toy Definitions, Vector Plushie Renderers & Trending GIPHY Animated GIF Badges
  */
+
+const GIF_CACHE = {};
+
+function getOrLoadGif(url) {
+    if (!url) return null;
+    if (GIF_CACHE[url]) return GIF_CACHE[url];
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = url;
+    GIF_CACHE[url] = img;
+    return img;
+}
+
+function drawGifBadge(ctx, r, gifUrl, name = 'GIF', fallbackDraw = null) {
+    ctx.save();
+
+    // 1. Outer Acrylic Badge Border with Holographic / Gold Bevel
+    const grad = ctx.createLinearGradient(-r, -r, r, r);
+    grad.addColorStop(0, '#ffd700');
+    grad.addColorStop(0.3, '#ff6ec7');
+    grad.addColorStop(0.7, '#00f2fe');
+    grad.addColorStop(1, '#ffd700');
+
+    ctx.fillStyle = grad;
+    ctx.strokeStyle = '#241408';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    // 2. Inner Disc Mask for the GIF image
+    ctx.beginPath();
+    ctx.arc(0, 0, r * 0.86, 0, Math.PI * 2);
+    ctx.clip();
+
+    // Dark backing
+    ctx.fillStyle = '#140c06';
+    ctx.fillRect(-r, -r, r * 2, r * 2);
+
+    const img = getOrLoadGif(gifUrl);
+    if (img && img.complete && img.naturalWidth > 0) {
+        const size = r * 1.72;
+        ctx.drawImage(img, -size / 2, -size / 2, size, size);
+    } else if (fallbackDraw) {
+        fallbackDraw(ctx, r * 0.85);
+    } else {
+        ctx.fillStyle = '#ff80ab';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('🎞️ GIF', 0, 0);
+    }
+
+    ctx.restore();
+
+    // 3. Glossy Acrylic Glass Reflection Arc
+    ctx.save();
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+    ctx.beginPath();
+    ctx.ellipse(0, -r * 0.45, r * 0.65, r * 0.28, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 4. Tiny Red GIPHY / GIF Pill Tag at Top
+    ctx.fillStyle = '#ff4757';
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.roundRect(-r * 0.35, -r * 0.96, r * 0.7, r * 0.26, 3);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 8px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('GIF', 0, -r * 0.83);
+
+    ctx.restore();
+}
+
 const TOY_CATALOGUE = [
     // =========================================================================
     // 🦫 1. CAPYBARA COLLECTION (10 TOYS)
@@ -1025,7 +1100,178 @@ const TOY_CATALOGUE = [
             ctx.fillStyle = '#ede7f6'; ctx.beginPath(); ctx.arc(0, 0, r * 0.88, 0, Math.PI * 2); ctx.fill();
             ctx.fillStyle = '#00e5ff'; ctx.beginPath(); ctx.arc(-r * 0.28, -r * 0.08, r * 0.12, 0, Math.PI * 2); ctx.arc(r * 0.28, -r * 0.08, r * 0.12, 0, Math.PI * 2); ctx.fill();
         }
+    },
+
+    // =========================================================================
+    // 🎞️ 6. GIPHY TRENDING GIF MEMES (10 TOYS)
+    // =========================================================================
+    {
+        id: 'gif_nah_cat',
+        category: 'gif',
+        name: 'NAH Meme Cat GIF',
+        rarity: 'legendary',
+        radius: 30,
+        color: '#fdfbf7',
+        accentColor: '#ff4757',
+        gifUrl: 'https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif',
+        tagline: 'Live animated trending NAH cat meme badge! 😾🎞️',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_capy_pullup',
+        category: 'gif',
+        name: 'Ok I Pull Up Capy GIF',
+        rarity: 'legendary',
+        radius: 30,
+        color: '#8b5a2b',
+        accentColor: '#38bdf8',
+        gifUrl: 'https://media.giphy.com/media/VCImBo2uUBqqQ/giphy.gif',
+        tagline: 'The ultimate viral capybara cruising along! 🦫🚗',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_pop_cat',
+        category: 'gif',
+        name: 'Pop Cat GIF',
+        rarity: 'rare',
+        radius: 29,
+        color: '#fff',
+        accentColor: '#e07a38',
+        gifUrl: 'https://media.giphy.com/media/unQ3IJU2RG7DO/giphy.gif',
+        tagline: 'POP POP POP! Endless mouth popping fun. 😺',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_bongo_cat',
+        category: 'gif',
+        name: 'Bongo Cat GIF',
+        rarity: 'legendary',
+        radius: 29,
+        color: '#fff',
+        accentColor: '#ff80ab',
+        gifUrl: 'https://media.giphy.com/media/ule4akeEDWA0/giphy.gif',
+        tagline: 'Slapping the bongo drums to the arcade beat! 🥁',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_vibing_cat',
+        category: 'gif',
+        name: 'Vibing Cat GIF',
+        rarity: 'rare',
+        radius: 29,
+        color: '#fff',
+        accentColor: '#00e5ff',
+        gifUrl: 'https://media.giphy.com/media/jpbnoe3UIa8TU8LM13/giphy.gif',
+        tagline: 'Nodding head and vibing to the chill music! 🎧',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_dancing_dog',
+        category: 'gif',
+        name: 'Dancing Doggo GIF',
+        rarity: 'rare',
+        radius: 29,
+        color: '#ffd54f',
+        accentColor: '#ff9800',
+        gifUrl: 'https://media.giphy.com/media/blSTtZehjAZ8I/giphy.gif',
+        tagline: 'Happy dancing pup showing off smooth moves! 🐶💃',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_nyan_cat',
+        category: 'gif',
+        name: 'Nyan Cat Space GIF',
+        rarity: 'legendary',
+        radius: 30,
+        color: '#2a1b4e',
+        accentColor: '#ff66c4',
+        gifUrl: 'https://media.giphy.com/media/sIIhZliB2McAo/giphy.gif',
+        tagline: 'Pop-tart kitten soaring across galaxy rainbows! 🌈✨',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_capy_orange',
+        category: 'gif',
+        name: 'Hot Spring Capy GIF',
+        rarity: 'rare',
+        radius: 29,
+        color: '#8b5a2b',
+        accentColor: '#ff9800',
+        gifUrl: 'https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif',
+        tagline: 'Chill capybara enjoying a warm yuzu orange onsen! ♨️🍊',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_crying_cat',
+        category: 'gif',
+        name: 'Thumbs Up Crying Cat GIF',
+        rarity: 'rare',
+        radius: 29,
+        color: '#fff',
+        accentColor: '#ffb300',
+        gifUrl: 'https://media.giphy.com/media/9Y6n9TR7U07ew/giphy.gif',
+        tagline: 'Holding back tears with a brave double thumbs up! 👍😿',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    },
+    {
+        id: 'gif_frog_dance',
+        category: 'gif',
+        name: 'Groovy Frog GIF',
+        rarity: 'common',
+        radius: 28,
+        color: '#7cb342',
+        accentColor: '#4caf50',
+        gifUrl: 'https://media.giphy.com/media/oBKCO5aimzqIU/giphy.gif',
+        tagline: 'Dancing lilypad frog with funky rhythm! 🐸🕺',
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
     }
 ];
 
+// Helper to register custom user-added GIPHY GIFs dynamically
+function registerCustomGifToy(name, gifUrl, rarity = 'legendary') {
+    const id = 'gif_custom_' + Date.now();
+    const newToy = {
+        id,
+        category: 'gif',
+        name: name || 'Custom GIPHY Meme',
+        rarity,
+        radius: 30,
+        color: '#2a140a',
+        accentColor: '#ffd700',
+        gifUrl,
+        tagline: `Custom GIPHY Meme Badge: ${name}! 🎞️`,
+        draw(ctx, r) {
+            drawGifBadge(ctx, r, this.gifUrl, this.name);
+        }
+    };
+    TOY_CATALOGUE.push(newToy);
+    // Preload image
+    getOrLoadGif(gifUrl);
+    return newToy;
+}
+
 window.TOY_CATALOGUE = TOY_CATALOGUE;
+window.getOrLoadGif = getOrLoadGif;
+window.drawGifBadge = drawGifBadge;
+window.registerCustomGifToy = registerCustomGifToy;
+

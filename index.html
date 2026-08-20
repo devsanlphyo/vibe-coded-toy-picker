@@ -70,7 +70,10 @@
                         🕹️ Mode: ARCADE
                     </button>
                     <button id="albumBtn" class="arcade-btn util-btn highlight">
-                        📖 Toy Album (<span id="collectionHeaderCount">0/51</span>)
+                        📖 Toy Album (<span id="collectionHeaderCount">0/61</span>)
+                    </button>
+                    <button id="addGifBtn" class="arcade-btn util-btn gif-btn" title="Add Custom Trending GIPHY GIF Plushie">
+                        🎞️ + GIF
                     </button>
                     <button id="refillBtn" class="arcade-btn util-btn">
                         🔄 Restock
@@ -115,6 +118,35 @@
         </div>
     </div>
 
+    <!-- Add Custom GIPHY GIF Modal -->
+    <div id="addGifModal" class="modal-backdrop">
+        <div class="modal-card gif-modal-card">
+            <div class="album-header">
+                <h2>🎞️ Add Custom GIPHY GIF Toy</h2>
+                <button id="closeAddGifBtn" class="album-close-btn">&times;</button>
+            </div>
+            <div class="gif-modal-body">
+                <p class="gif-modal-desc">
+                    Paste any link from <a href="https://giphy.com/explore/trend" target="_blank" rel="noopener">GIPHY Trending</a> (or direct <code>.gif</code> URL) to spawn a custom animated meme toy in the machine!
+                </p>
+                <div class="gif-input-group">
+                    <label for="customGifName">Meme Toy Name:</label>
+                    <input type="text" id="customGifName" placeholder="e.g. Chill Dancing Cat" class="gif-input">
+                </div>
+                <div class="gif-input-group">
+                    <label for="customGifUrl">GIPHY URL or GIF Link:</label>
+                    <input type="url" id="customGifUrl" placeholder="https://giphy.com/gifs/... or https://media.giphy.com/..." class="gif-input">
+                </div>
+                <div class="gif-preview-container" id="customGifPreviewWrap" style="display: none;">
+                    <img id="customGifPreviewImg" class="gif-preview-thumb" alt="Preview">
+                </div>
+                <div class="gif-modal-actions">
+                    <button id="spawnCustomGifBtn" class="arcade-btn gif-spawn-btn">✨ Spawn Into Machine! ✨</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toy Collection Album Modal -->
     <div id="albumModal" class="modal-backdrop">
         <div class="modal-card">
@@ -128,21 +160,22 @@
                     <div id="albumProgressFill" class="progress-fill"></div>
                 </div>
                 <div class="album-stats-row">
-                    <span id="albumProgressText">0 / 51 Discovered (0%)</span>
+                    <span id="albumProgressText">0 / 61 Discovered (0%)</span>
                     <span id="albumTotalStats">Total Plushies Rescued: 0</span>
                 </div>
             </div>
 
             <div class="album-filter-tabs">
-                <button class="album-filter-btn active" data-filter="all">All (51)</button>
+                <button class="album-filter-btn active" data-filter="all">All (61)</button>
+                <button class="album-filter-btn" data-filter="gif">🎞️ GIFs (10)</button>
                 <button class="album-filter-btn" data-filter="capybara">🦫 Capybaras (10)</button>
                 <button class="album-filter-btn" data-filter="cat">🐱 Cats (11)</button>
                 <button class="album-filter-btn" data-filter="dog">🐶 Dogs (10)</button>
                 <button class="album-filter-btn" data-filter="forest">🐼 Forest (10)</button>
                 <button class="album-filter-btn" data-filter="fantasy">🦄 Fantasy (10)</button>
-                <button class="album-filter-btn" data-filter="common">Common (18)</button>
-                <button class="album-filter-btn" data-filter="rare">Rare (20)</button>
-                <button class="album-filter-btn" data-filter="legendary">Legendary (13)</button>
+                <button class="album-filter-btn" data-filter="common">Common (19)</button>
+                <button class="album-filter-btn" data-filter="rare">Rare (24)</button>
+                <button class="album-filter-btn" data-filter="legendary">Legendary (18)</button>
             </div>
 
             <div id="albumGrid" class="album-grid">

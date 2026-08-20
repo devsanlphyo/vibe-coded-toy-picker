@@ -223,6 +223,72 @@
             });
         });
 
+        // Add Custom GIPHY GIF Modal Handling
+        const addGifBtn = document.getElementById('addGifBtn');
+        const addGifModal = document.getElementById('addGifModal');
+        const closeAddGifBtn = document.getElementById('closeAddGifBtn');
+        const customGifName = document.getElementById('customGifName');
+        const customGifUrl = document.getElementById('customGifUrl');
+        const customGifPreviewWrap = document.getElementById('customGifPreviewWrap');
+        const customGifPreviewImg = document.getElementById('customGifPreviewImg');
+        const spawnCustomGifBtn = document.getElementById('spawnCustomGifBtn');
+
+        if (addGifBtn && addGifModal) {
+            addGifBtn.addEventListener('click', () => {
+                audio.ensureContext();
+                audio.playClick();
+                addGifModal.classList.add('visible');
+            });
+        }
+
+        if (closeAddGifBtn && addGifModal) {
+            closeAddGifBtn.addEventListener('click', () => {
+                audio.playClick();
+                addGifModal.classList.remove('visible');
+            });
+        }
+
+        if (customGifUrl) {
+            customGifUrl.addEventListener('input', () => {
+                const parsed = normalizeGiphyUrl(customGifUrl.value.trim());
+                if (parsed) {
+                    customGifPreviewImg.src = parsed;
+                    customGifPreviewWrap.style.display = 'flex';
+                } else {
+                    customGifPreviewWrap.style.display = 'none';
+                }
+            });
+        }
+
+        if (spawnCustomGifBtn) {
+            spawnCustomGifBtn.addEventListener('click', () => {
+                const rawUrl = customGifUrl.value.trim();
+                const name = customGifName.value.trim() || 'Custom GIPHY Meme';
+                const directUrl = normalizeGiphyUrl(rawUrl);
+
+                if (!directUrl) {
+                    showToast('⚠️ Please enter a valid GIPHY URL or .gif link!');
+                    return;
+                }
+
+                audio.playDropButton();
+                const newToy = window.registerCustomGifToy(name, directUrl, 'legendary');
+
+                // Spawn into physics container
+                physics.spawnToy(newToy, 250 + (Math.random() - 0.5) * 80, 180);
+
+                spawnConfettiBurst();
+                showToast(`🎉 Spawned "${name}" into the machine!`);
+                updateTokenDisplay();
+
+                // Clear and close
+                customGifUrl.value = '';
+                customGifName.value = '';
+                customGifPreviewWrap.style.display = 'none';
+                addGifModal.classList.remove('visible');
+            });
+        }
+
         // Prize Won Modal Handling
         const winModal = document.getElementById('winModal');
         const claimPrizeBtn = document.getElementById('claimPrizeBtn');
@@ -235,7 +301,7 @@
         }
 
         // Close on background modal click
-        [albumModal, winModal].forEach(m => {
+        [albumModal, winModal, addGifModal].forEach(m => {
             if (m) {
                 m.addEventListener('click', (e) => {
                     if (e.target === m) {
@@ -244,6 +310,20 @@
                 });
             }
         });
+    }
+
+    function normalizeGiphyUrl(url) {
+        if (!url) return '';
+        // If already direct image
+        if (url.match(/\.(gif|webp|png|jpg)$/i) || url.includes('media.giphy.com')) {
+            return url;
+        }
+        // GIPHY link format: https://giphy.com/gifs/title-id or https://giphy.com/gifs/id
+        const match = url.match(/giphy\.com\/gifs\/(?:.*-)?([a-zA-Z0-9]+)/);
+        if (match && match[1]) {
+            return `https://media.giphy.com/media/${match[1]}/giphy.gif`;
+        }
+        return url;
     }
 
     function updateDifficultyButtonUI(btn, diff) {
@@ -362,17 +442,27 @@
 
         if (!winModal) return;
 
-        // Render Canvas Trophy
+        // Render Trophy Thumbnail
         winThumb.innerHTML = '';
-        const canvas = document.createElement('canvas');
-        canvas.width = 140;
-        canvas.height = 140;
-        const ctx = canvas.getContext('2d');
-        ctx.save();
-        ctx.translate(70, 70);
-        toy.draw(ctx, 48);
-        ctx.restore();
-        winThumb.appendChild(canvas);
+
+        if (toy.gifUrl) {
+            // Live Animated GIPHY Meme Trophy!
+            const img = document.createElement('img');
+            img.src = toy.gifUrl;
+            img.className = 'win-gif-thumb';
+            img.alt = toy.name;
+            winThumb.appendChild(img);
+        } else {
+            const canvas = document.createElement('canvas');
+            canvas.width = 140;
+            canvas.height = 140;
+            const ctx = canvas.getContext('2d');
+            ctx.save();
+            ctx.translate(70, 70);
+            toy.draw(ctx, 48);
+            ctx.restore();
+            winThumb.appendChild(canvas);
+        }
 
         winName.innerText = toy.name;
         winRarity.innerText = `${toy.rarity.toUpperCase()} PLUSHIE`;

@@ -83,7 +83,7 @@ class CollectionManager {
         grid.innerHTML = '';
 
         let filtered = catalogue;
-        if (['capybara', 'cat', 'dog', 'forest', 'fantasy'].includes(filter)) {
+        if (['capybara', 'cat', 'dog', 'forest', 'fantasy', 'gif'].includes(filter)) {
             filtered = catalogue.filter(t => t.category === filter);
         } else if (filter !== 'all') {
             filtered = catalogue.filter(t => t.rarity === filter);
@@ -96,37 +96,49 @@ class CollectionManager {
             const card = document.createElement('div');
             card.className = `album-card rarity-${toy.rarity} ${isUnlocked ? 'unlocked' : 'locked'}`;
 
-            // Create Canvas Thumbnail for Plushie
-            const canvas = document.createElement('canvas');
-            canvas.width = 90;
-            canvas.height = 90;
-            const ctx = canvas.getContext('2d');
+            const thumbWrap = document.createElement('div');
+            thumbWrap.className = 'card-thumb-wrap';
 
-            ctx.save();
-            ctx.translate(45, 45);
-
-            if (isUnlocked) {
-                // Draw Full Color Plushie
-                toy.draw(ctx, 32);
+            if (isUnlocked && toy.gifUrl) {
+                // Live Animated GIF Badge in Album!
+                const img = document.createElement('img');
+                img.src = toy.gifUrl;
+                img.className = 'album-gif-thumb';
+                img.alt = toy.name;
+                thumbWrap.appendChild(img);
             } else {
-                // Draw Mysterious Silhouette
-                ctx.fillStyle = 'rgba(75, 55, 40, 0.6)';
-                ctx.beginPath();
-                ctx.arc(0, 0, 32, 0, Math.PI * 2);
-                ctx.fill();
+                // Canvas Vector Plushie or Silhouette
+                const canvas = document.createElement('canvas');
+                canvas.width = 90;
+                canvas.height = 90;
+                const ctx = canvas.getContext('2d');
 
-                ctx.fillStyle = '#edd7b8';
-                ctx.font = 'bold 26px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText('?', 0, 2);
+                ctx.save();
+                ctx.translate(45, 45);
+
+                if (isUnlocked) {
+                    // Draw Full Color Plushie
+                    toy.draw(ctx, 32);
+                } else {
+                    // Draw Mysterious Silhouette
+                    ctx.fillStyle = 'rgba(75, 55, 40, 0.6)';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 32, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.fillStyle = '#edd7b8';
+                    ctx.font = 'bold 26px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('?', 0, 2);
+                }
+                ctx.restore();
+                thumbWrap.appendChild(canvas);
             }
-            ctx.restore();
 
             const stars = toy.rarity === 'legendary' ? '★★★' : (toy.rarity === 'rare' ? '★★☆' : '★☆☆');
 
             card.innerHTML = `
-                <div class="card-thumb-wrap"></div>
                 <div class="card-info">
                     <div class="card-name">${isUnlocked ? toy.name : '??? Secret Toy'}</div>
                     <div class="card-rarity">${stars} ${toy.rarity.toUpperCase()}</div>
@@ -135,7 +147,7 @@ class CollectionManager {
                 </div>
             `;
 
-            card.querySelector('.card-thumb-wrap').appendChild(canvas);
+            card.insertBefore(thumbWrap, card.firstChild);
             grid.appendChild(card);
         });
     }

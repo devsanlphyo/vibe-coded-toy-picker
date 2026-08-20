@@ -92,6 +92,19 @@ A charming web-based 2D Toy Picker claw crane game featuring authentic rigid-bod
 49. **Baby Fire Phoenix (★★★)**: *Warm golden flames and eternal starlight wings. 🔥🪶*
 50. **Celestial Star Axolotl (★★★)**: *Galactic stardust wings and glowing cosmos frills! 🌌✨*
 
+### 🎞️ 6. GIPHY Trending GIF Memes (10 Toys + Custom GIF Spawner)
+51. **NAH Meme Cat GIF (★★★)**: *Live animated trending NAH cat meme badge! 😾🎞️*
+52. **Ok I Pull Up Capy GIF (★★★)**: *The ultimate viral capybara cruising along! 🦫🚗*
+53. **Pop Cat GIF (★★☆)**: *POP POP POP! Endless mouth popping fun. 😺*
+54. **Bongo Cat GIF (★★★)**: *Slapping the bongo drums to the arcade beat! 🥁*
+55. **Vibing Cat GIF (★★☆)**: *Nodding head and vibing to the chill music! 🎧*
+56. **Dancing Doggo GIF (★★☆)**: *Happy dancing pup showing off smooth moves! 🐶💃*
+57. **Nyan Cat Space GIF (★★★)**: *Pop-tart kitten soaring across galaxy rainbows! 🌈✨*
+58. **Hot Spring Capy GIF (★★☆)**: *Chill capybara enjoying a warm yuzu orange onsen! ♨️🍊*
+59. **Thumbs Up Crying Cat GIF (★★☆)**: *Holding back tears with a brave double thumbs up! 👍😿*
+60. **Groovy Frog GIF (★☆☆)**: *Dancing lilypad frog with funky rhythm! 🐸🕺*
+*Plus the interactive **`🎞️ + GIF`** spawner: paste any link from [GIPHY Trending](https://giphy.com/explore/trend) to spawn custom animated GIF meme badges in real-time!*
+
 ## 📱 Progressive Web App (PWA) & Offline Play
 
 Cozy Toy Picker is a full **Progressive Web App (PWA)**:
