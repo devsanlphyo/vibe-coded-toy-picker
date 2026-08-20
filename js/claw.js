@@ -136,20 +136,13 @@ class ClawController {
                     const dy = t.body.position.y - this.y;
                     const dist = Math.hypot(dx, dy);
 
-                    if (dist < t.radius + 18 && dy > 0) {
+                    if (dist < t.radius + 26 && dy > -8) {
                         hitToy = true;
-                        // Push misaligned toys slightly away on impact
-                        if (Math.abs(dx) > 12) {
-                            Matter.Body.applyForce(t.body, t.body.position, {
-                                x: Math.sign(dx) * 0.003,
-                                y: 0.001
-                            });
-                        }
                         break;
                     }
                 }
 
-                if (this.y >= this.maxY || (this.y > 220 && hitToy)) {
+                if (this.y >= this.maxY || (this.y > 180 && hitToy)) {
                     this.state = 'grabbing';
                     this.stateTimer = 0;
                     if (window.audioManager) {
@@ -174,9 +167,10 @@ class ClawController {
                 this.y -= this.liftSpeed;
 
                 if (this.grabbedToy && this.grabbedToy.body) {
-                    // Position grabbed toy with slight sway
+                    // Position grabbed toy safely within cabinet bounds
+                    const safeX = Math.max(126, Math.min(504, clawTipX));
                     Matter.Body.setPosition(this.grabbedToy.body, {
-                        x: clawTipX,
+                        x: safeX,
                         y: this.y + 24
                     });
                     Matter.Body.setVelocity(this.grabbedToy.body, { x: 0, y: -this.liftSpeed });
@@ -227,8 +221,9 @@ class ClawController {
                 }
 
                 if (this.grabbedToy && this.grabbedToy.body) {
+                    const safeX = Math.max(this.chuteX, Math.min(504, this.x + Math.sin(this.swayAngle) * 20));
                     Matter.Body.setPosition(this.grabbedToy.body, {
-                        x: this.x + Math.sin(this.swayAngle) * 20,
+                        x: safeX,
                         y: this.y + 24
                     });
 
@@ -256,48 +251,48 @@ class ClawController {
 
     attemptGrab(toys, tipX) {
         let bestToy = null;
-        let minDx = 999;
+        let minDistance = 999;
 
         // Alignment Tolerances by Difficulty:
-        // Cozy: 42px | Arcade: 28px | Master: 18px
-        const maxHorizTolerance = this.difficulty === 'cozy' ? 42 : (this.difficulty === 'arcade' ? 28 : 18);
-        const maxVertDistance = 48;
+        // Cozy: 48px | Arcade: 38px | Master: 26px
+        const maxHorizTolerance = this.difficulty === 'cozy' ? 48 : (this.difficulty === 'arcade' ? 38 : 26);
+        const maxVertDistance = 55;
 
         for (let t of toys) {
             if (!t.body) continue;
             const dx = Math.abs(t.body.position.x - tipX);
-            const dy = t.body.position.y - (this.y + 20);
+            const dy = t.body.position.y - (this.y + 15);
+            const dist = Math.hypot(dx, dy);
 
-            if (dx < maxHorizTolerance && dy >= -12 && dy < maxVertDistance) {
-                if (dx < minDx) {
-                    minDx = dx;
+            if (dx < maxHorizTolerance && dy >= -18 && dy < maxVertDistance) {
+                if (dist < minDistance) {
+                    minDistance = dist;
                     bestToy = t;
                 }
-            } else if (dx >= maxHorizTolerance && dx < maxHorizTolerance + 18 && dy >= -12 && dy < maxVertDistance) {
-                // Off-center hit: Nudge the toy away!
-                Matter.Body.applyForce(t.body, t.body.position, {
-                    x: Math.sign(t.body.position.x - tipX) * 0.005,
-                    y: -0.002
-                });
             }
         }
 
         if (bestToy) {
             this.grabbedToy = bestToy;
+            // Prevent violent physics collision ejection against walls while carried
+            if (this.grabbedToy.body) {
+                this.grabbedToy.body.isSensor = true;
+            }
+
             const rarity = bestToy.template.rarity || 'common';
 
             // Calculate Grip Quality based on Alignment, Sway, and Rarity
-            let baseStability = rarity === 'legendary' ? 0.50 : (rarity === 'rare' ? 0.70 : 0.88);
-            if (this.difficulty === 'master') baseStability -= 0.22;
+            let baseStability = rarity === 'legendary' ? 0.55 : (rarity === 'rare' ? 0.72 : 0.90);
+            if (this.difficulty === 'master') baseStability -= 0.20;
             if (this.difficulty === 'cozy') baseStability += 0.30;
 
             // Penalty for off-center alignment
-            const alignAccuracy = 1.0 - (minDx / maxHorizTolerance); // 1.0 = dead center, 0.0 = edge
+            const alignAccuracy = 1.0 - (minDistance / (maxHorizTolerance + 15));
             // Penalty for wild swaying at time of grab
-            const swayPenalty = Math.min(0.4, Math.abs(this.swayAngle) * 2.0);
+            const swayPenalty = Math.min(0.35, Math.abs(this.swayAngle) * 1.8);
 
-            this.gripQuality = Math.max(0.1, Math.min(1.0, (baseStability * 0.7 + alignAccuracy * 0.3) - swayPenalty));
-            this.isWobbling = this.gripQuality < 0.65;
+            this.gripQuality = Math.max(0.15, Math.min(1.0, (baseStability * 0.7 + alignAccuracy * 0.3) - swayPenalty));
+            this.isWobbling = this.gripQuality < 0.60;
 
             Matter.Sleeping.set(bestToy.body, false);
             Matter.Body.setVelocity(bestToy.body, { x: 0, y: -0.5 });
@@ -312,8 +307,8 @@ class ClawController {
         if (!this.grabbedToy) return;
         if (this.difficulty === 'cozy') return;
 
-        // If grip is weak (< 0.65), chance to slip during lift
-        const slipChance = (1.0 - this.gripQuality) * (this.difficulty === 'master' ? 0.025 : 0.012);
+        // If grip is weak (< 0.60), chance to slip during lift
+        const slipChance = (1.0 - this.gripQuality) * (this.difficulty === 'master' ? 0.020 : 0.009);
 
         if (Math.random() < slipChance) {
             this.slipToy();
@@ -325,8 +320,8 @@ class ClawController {
         if (this.difficulty === 'cozy') return;
 
         // Inertial slip penalty when trolley decelerates or swings
-        const swingTension = Math.abs(this.swayAngle) * 0.8;
-        const slipChance = (1.0 - this.gripQuality + swingTension) * (this.difficulty === 'master' ? 0.035 : 0.016);
+        const swingTension = Math.abs(this.swayAngle) * 0.6;
+        const slipChance = (1.0 - this.gripQuality + swingTension) * (this.difficulty === 'master' ? 0.025 : 0.012);
 
         if (Math.random() < slipChance) {
             this.slipToy();
@@ -344,11 +339,14 @@ class ClawController {
             this.onSlip(reason);
         }
 
+        const toyBody = this.grabbedToy.body;
+        toyBody.isSensor = false; // Restore physical collisions
+
         // Tumble off with realistic deflection
         const flingX = (Math.random() - 0.5) * 2.5 + (this.swayAngle * 8.0);
-        Matter.Body.setVelocity(this.grabbedToy.body, { x: flingX, y: 2.0 });
-        Matter.Body.setAngularVelocity(this.grabbedToy.body, (Math.random() - 0.5) * 0.25);
-        Matter.Sleeping.set(this.grabbedToy.body, false);
+        Matter.Body.setVelocity(toyBody, { x: flingX, y: 2.0 });
+        Matter.Body.setAngularVelocity(toyBody, (Math.random() - 0.5) * 0.25);
+        Matter.Sleeping.set(toyBody, false);
 
         this.grabbedToy = null;
         this.gripQuality = 0;
@@ -367,11 +365,13 @@ class ClawController {
 
     releaseGrabbedToy() {
         if (this.grabbedToy && this.grabbedToy.body) {
-            Matter.Body.setVelocity(this.grabbedToy.body, {
+            const toyBody = this.grabbedToy.body;
+            toyBody.isSensor = false; // Restore physical collisions
+            Matter.Body.setVelocity(toyBody, {
                 x: (Math.random() - 0.5) * 1.2,
                 y: 1.8
             });
-            Matter.Sleeping.set(this.grabbedToy.body, false);
+            Matter.Sleeping.set(toyBody, false);
             this.grabbedToy = null;
             this.gripQuality = 0;
             this.isWobbling = false;
