@@ -128,6 +128,31 @@ class PhysicsManager {
         }
     }
 
+    spawnToy(template, x = 280, y = 200) {
+        if (!template) return null;
+        const radius = template.radius || 28;
+        const body = this.Bodies.circle(x, y, radius, {
+            restitution: 0.22,
+            friction: 0.6,
+            frictionAir: 0.015,
+            density: 0.002,
+            angle: (Math.random() - 0.5) * 0.4
+        });
+
+        this.Composite.add(this.world, body);
+
+        const toyObj = {
+            template,
+            radius,
+            body,
+            id: template.id + '_' + Date.now(),
+            isCollected: false
+        };
+
+        this.toys.push(toyObj);
+        return toyObj;
+    }
+
     refill() {
         this.spawnToyPile(22);
         if (window.audioManager) {

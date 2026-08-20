@@ -1113,7 +1113,7 @@ const TOY_CATALOGUE = [
         radius: 30,
         color: '#fdfbf7',
         accentColor: '#ff4757',
-        gifUrl: 'https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif',
+        gifUrl: 'https://static.klipy.com/ii/c44064a00e4b7451969381d90dea1769/dc/07/1uYFp9Nu.gif',
         tagline: 'Live animated trending NAH cat meme badge! 😾🎞️',
         draw(ctx, r) {
             drawGifBadge(ctx, r, this.gifUrl, this.name);

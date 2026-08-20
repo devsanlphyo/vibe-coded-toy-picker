@@ -314,15 +314,20 @@
 
     function normalizeGiphyUrl(url) {
         if (!url) return '';
-        // If already direct image
-        if (url.match(/\.(gif|webp|png|jpg)$/i) || url.includes('media.giphy.com')) {
+        url = url.trim();
+
+        // 1. Direct Image/Media Links (klipy, giphy, tenor, imgur, discord, etc.)
+        if (url.match(/\.(gif|webp|png|jpg|jpeg)($|\?)/i) || url.includes('media.giphy.com') || url.includes('i.giphy.com') || url.includes('klipy.com') || url.includes('tenor.com')) {
             return url;
         }
-        // GIPHY link format: https://giphy.com/gifs/title-id or https://giphy.com/gifs/id
-        const match = url.match(/giphy\.com\/gifs\/(?:.*-)?([a-zA-Z0-9]+)/);
-        if (match && match[1]) {
-            return `https://media.giphy.com/media/${match[1]}/giphy.gif`;
+
+        // 2. GIPHY page URLs (e.g. https://giphy.com/gifs/funny-cat-ICOgUNjpvO0PC or https://giphy.com/gifs/ICOgUNjpvO0PC)
+        const giphyMatch = url.match(/giphy\.com\/gifs\/(?:[a-zA-Z0-9_-]+-)?([a-zA-Z0-9]+)/);
+        if (giphyMatch && giphyMatch[1]) {
+            return `https://media.giphy.com/media/${giphyMatch[1]}/giphy.gif`;
         }
+
+        // 3. Fallback
         return url;
     }
 

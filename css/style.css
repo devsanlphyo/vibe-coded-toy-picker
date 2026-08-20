@@ -372,6 +372,16 @@ body {
     backdrop-filter: blur(5px);
 }
 
+.nah-cat-img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    background: #000;
+}
+
 .nah-caption {
     font-family: 'Impact', 'Arial Black', sans-serif;
     font-size: 1.7rem;
