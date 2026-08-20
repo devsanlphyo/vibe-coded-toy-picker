@@ -1,4 +1,4 @@
-const CACHE_NAME = 'toy-picker-v1';
+const CACHE_NAME = 'toy-picker-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -18,17 +18,18 @@ const ASSETS_TO_CACHE = [
 
 // Install Event: Pre-cache core assets
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[PWA ServiceWorker] Pre-caching offline assets');
+      console.log('[PWA ServiceWorker] Pre-caching v4 assets');
       return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
         console.warn('[PWA ServiceWorker] Pre-cache non-fatal warning:', err);
       });
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
-// Activate Event: Clean up stale caches
+// Activate Event: Clean up stale caches & claim clients immediately
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keyList) => {
@@ -44,35 +45,24 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch Event: Cache First with Network Fallback
+// Fetch Event: Network First with Offline Cache Fallback
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests
   if (event.request.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-
-      return fetch(event.request).then((networkResponse) => {
-        // Check if valid response
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
         }
-
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
         return networkResponse;
-      }).catch(() => {
-        // Fallback for HTML navigation requests
-        if (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html')) {
-          return caches.match('./index.html');
-        }
-      });
-    })
+      })
+      .catch(() => {
+        // If offline or network fails, fallback to cached version
+        return caches.match(event.request);
+      })
   );
 });

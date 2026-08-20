@@ -14,7 +14,7 @@
     <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
     <link rel="icon" type="image/png" href="icons/icon-192.png">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=4">
     <!-- Matter.js Physics Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
@@ -185,19 +185,22 @@
     </div>
 
     <!-- Game Scripts in Dependency Order -->
-    <script src="js/audio.js"></script>
-    <script src="js/toys.js"></script>
-    <script src="js/claw.js"></script>
-    <script src="js/physics.js"></script>
-    <script src="js/collection.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/audio.js?v=4"></script>
+    <script src="js/toys.js?v=4"></script>
+    <script src="js/claw.js?v=4"></script>
+    <script src="js/physics.js?v=4"></script>
+    <script src="js/collection.js?v=4"></script>
+    <script src="js/main.js?v=4"></script>
 
-    <!-- PWA Service Worker Registration -->
+    <!-- PWA Service Worker Registration & Cache Busting -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then((reg) => console.log('[PWA] Service Worker registered with scope:', reg.scope))
+                navigator.serviceWorker.register('./sw.js?v=4')
+                    .then((reg) => {
+                        console.log('[PWA] Service Worker registered:', reg.scope);
+                        reg.update();
+                    })
                     .catch((err) => console.warn('[PWA] Service Worker registration failed:', err));
             });
         }
