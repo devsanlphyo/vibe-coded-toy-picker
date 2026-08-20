@@ -29,36 +29,67 @@ A charming web-based 2D Toy Picker claw crane game featuring authentic rigid-bod
 | **Toggle Music** | Click `🎵 Music` | Tap Music Button |
 | **Toggle Sound** | Click `🔊 Sound` | Tap Sound Button |
 
-## 🌟 Toy Catalogue & Rarity Tiers (29 Unique Plushies)
+## 🌟 Toy Catalogue & Rarity Tiers (50 Unique Plushies)
 
-### 🦫 10 Unique Capybara Toys
+### 🦫 1. Capybara Collection (10 Toys)
 1. **Cool Guy Capybara (★★☆)**: *Super chill with retro blue shades and double thumbs up! 👍😎👍*
-2. **Yuzu Zen Capybara (★☆☆)**: *Master of ultimate relaxation with a juicy yuzu orange on its head. 🍊*
-3. **Capy & Duck Pal (★★★)**: *Best buddies with a cozy red winter scarf and baby duckling on top. 🐥*
-4. **Onsen Spa Capybara (★★☆)**: *Soaking in a warm hot spring with a folded spa towel. ♨️*
+2. **Yuzu Zen Capybara (★☆☆)**: *Master of ultimate relaxation with an orange hat. 🍊*
+3. **Capy & Duck Pal (★★★)**: *Cozy red winter scarf with a baby duckling on head. 🐥*
+4. **Onsen Spa Capybara (★★☆)**: *Soaking in a hot spring with a folded spa towel. ♨️*
 5. **Bakery Capybara (★☆☆)**: *Chief pastry chef holding a fresh buttery croissant. 🥐*
-6. **Strawberry Capybara (★★☆)**: *Sporting a fresh red strawberry hat with cute seed dots. 🍓*
+6. **Strawberry Capybara (★★☆)**: *Sporting a fresh red strawberry hat with seed dots. 🍓*
 7. **Froggy Raincoat Capy (★☆☆)**: *Splashing in puddles wearing a froggy hooded raincoat. 🐸*
 8. **Donut Float Capybara (★★☆)**: *Floating gently inside a pink strawberry sprinkle donut ring. 🍩*
 9. **Star Wizard Capybara (★★★)**: *Casts spells of infinite chillness with a starry wizard hat. 🧙‍♂️✨*
-10. **Boba Milk Tea Capybara (★★★)**: *Sipping brown sugar boba milk tea with chewy tapioca pearls. 🧋*
+10. **Boba Milk Tea Capybara (★★★)**: *Sipping brown sugar boba milk tea all day long. 🧋*
 
-### 🐱 10 Unique Cat Toys
-1. **Calico Kitten (★☆☆)**: *Classic tricolor calico with emerald eyes and whiskers. 🐱*
-2. **Chonky Orange Tabby (★☆☆)**: *100% fluff, 0% thoughts, 1000% love! 🐾*
-3. **Bread Toast Cat (★☆☆)**: *Stuck its head right through a slice of golden buttered toast! 🍞*
-4. **Midnight Witch Cat (★★☆)**: *Sleek black kitten with glowing gold eyes and purple ribbon bell. 🐈‍⬛*
-5. **Siamese Princess (★★☆)**: *Elegant chocolate-point mask with sparkling sapphire eyes. 💎*
-6. **Neko Salmon Sushi (★★☆)**: *White kitten wrapped in nori seaweed with salmon sashimi on top. 🍣*
-7. **Matcha Boba Cat (★★☆)**: *Pastel matcha cat enjoying cold boba tea with cat-shaped pearls. 🍵*
-8. **Cosmic Astro-Cat (★★★)**: *Explores the Milky Way in a glowing astronaut bubble helmet. 🚀🌌*
-9. **Shark Costume Kitty (★★★)**: *Ferociously cuddly kitten wearing a shark suit with teeth and fin! 🦈*
-10. **Sunflower Kitty (★★★)**: *Radiant golden kitten blooming with cheerful sunflower petals! 🌻*
+### 🐱 2. Cat Collection (10 Toys)
+11. **Calico Kitten (★☆☆)**: *Classic tricolor calico with emerald eyes and whiskers. 🐱*
+12. **Chonky Orange Tabby (★☆☆)**: *100% fluff, 0% thoughts, 1000% love! 🐾*
+13. **Bread Toast Cat (★☆☆)**: *Stuck its head right through a slice of golden buttered toast! 🍞*
+14. **Midnight Witch Cat (★★☆)**: *Sleek black kitten with glowing gold eyes and purple bell collar. 🐈‍⬛*
+15. **Siamese Princess (★★☆)**: *Elegant chocolate-point mask with sparkling sapphire eyes. 💎*
+16. **Neko Salmon Sushi (★★☆)**: *White kitten wrapped in nori seaweed with salmon sashimi on top. 🍣*
+17. **Matcha Boba Cat (★★☆)**: *Pastel matcha cat enjoying cold boba tea with cat-shaped pearls. 🍵*
+18. **Cosmic Astro-Cat (★★★)**: *Explores the Milky Way in a glowing astronaut bubble helmet. 🚀🌌*
+19. **Shark Costume Kitty (★★★)**: *Ferociously cuddly kitten wearing a shark suit with teeth and fin! 🦈*
+20. **Sunflower Kitty (★★★)**: *Radiant golden kitten blooming with cheerful sunflower petals! 🌻*
 
-### 🧸 9 Classic Arcade Plushies
-- **Honey Bear (★☆☆)**, **Rubber Ducky (★☆☆)**, **Fluffy Bunny (★☆☆)**, **Cuddle Penguin (★☆☆)**
-- **Magic Shroom (★★☆)**, **Starry Cloud (★★☆)**
-- **Golden Dragon (★★★)**, **Rainbow Unicorn (★★★)**, **Royal Mystery Egg (★★★)**
+### 🐶 3. Dog & Puppy Collection (10 Toys)
+21. **Classic Shiba Inu (★☆☆)**: *Such fluff, very loyal, wow plushie! 🐕*
+22. **Royal Welsh Corgi (★☆☆)**: *Iconic peach bottom fluff and big perky ears! 🦊*
+23. **Silly Wrinkled Pug (★☆☆)**: *Cute wrinkled snout, big puppy eyes, and happy tongue! 🐶*
+24. **Golden Retriever Pup (★☆☆)**: *Sunny pup ready to play fetch with a tennis ball! 🎾*
+25. **Fluffy Pink Poodle (★★☆)**: *Chic pastel pink pom-poms with a silk ribbon bow. 🐩*
+26. **Arctic Husky (★★☆)**: *Silver wolf markings with piercing icy-blue arctic eyes. ❄️*
+27. **Detective Basset Hound (★★☆)**: *Tracking clues with droopy ears and a detective hat! 🔍*
+28. **Dachshund Hotdog (★★☆)**: *Silly long pup nestled right inside a warm mustard bun! 🌭*
+29. **Guardian Angel Pup (★★★)**: *Blessed golden puppy with feathery wings and a golden halo. 😇✨*
+30. **Cloud Fluff Samoyed (★★★)**: *Pure white smiling cloud of eternal happiness! ☁️🤍*
+
+### 🐼 4. Forest & Wildlife Friends (10 Toys)
+31. **Honey Bear (★☆☆)**: *Loves warm honey and cozy hugs. 🍯*
+32. **Rubber Ducky (★☆☆)**: *Always ready for bath time splashing! 🦆*
+33. **Fluffy Bunny (★☆☆)**: *Gentle twitchy nose and ultra soft fur. 🐰*
+34. **Cuddle Penguin (★☆☆)**: *Waddles with joy when holding a pebble. 🐧*
+35. **Tiny Froggie (★☆☆)**: *Ribbit! Expert fly catcher and lilypad lounger. 🐸*
+36. **Sweet Bamboo Panda (★☆☆)**: *Happily munching a fresh stalk of green bamboo. 🎋🐼*
+37. **Sea Otter Pal (★★☆)**: *Floating peacefully while hugging a prized pink seashell. 🐚*
+38. **Autumn Red Fox (★★☆)**: *Fiery orange coat with a bushy white-tipped tail. 🦊🍂*
+39. **Rusty Red Panda (★★☆)**: *Adorable white eyebrow marks and a lush ringed tail! 🐾*
+40. **Sleepy Tree Sloth (★★☆)**: *Moving at 0.1 km/h with an unstoppable gentle smile. 🦥🌿*
+
+### 🦄 5. Fantasy & Mythical Collection (10 Toys)
+41. **Magic Shroom (★★☆)**: *Glows faintly beneath enchanted forest canopies. 🍄*
+42. **Starry Cloud (★★☆)**: *Floats on gentle dreams and stardust breezes. ⭐*
+43. **Octo Plush (★★☆)**: *Has eight arms for holding eight snacks at once. 🐙*
+44. **Boba Axolotl (★★☆)**: *Sweet as milk tea with brown sugar boba pearls. 🧋*
+45. **Matcha Dino (★☆☆)**: *Tiny stomper who enjoys warm herbal tea and clover fields. 🦕🍵*
+46. **Golden Dragon (★★★)**: *Legendary guardian of ancient treasure vaults. 🐉👑*
+47. **Rainbow Unicorn (★★★)**: *Spreads prismatic rainbows wherever it gallops. 🦄🌈*
+48. **Royal Mystery Egg (★★★)**: *Crowned with jewels, holds mythical surprises. 👑✨*
+49. **Baby Fire Phoenix (★★★)**: *Warm golden flames and eternal starlight wings. 🔥🪶*
+50. **Celestial Star Axolotl (★★★)**: *Galactic stardust wings and glowing cosmos frills! 🌌✨*
 
 ## 🚀 How to Run
 

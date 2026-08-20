@@ -83,10 +83,8 @@ class CollectionManager {
         grid.innerHTML = '';
 
         let filtered = catalogue;
-        if (filter === 'capybara') {
-            filtered = catalogue.filter(t => t.category === 'capybara');
-        } else if (filter === 'cat') {
-            filtered = catalogue.filter(t => t.category === 'cat');
+        if (['capybara', 'cat', 'dog', 'forest', 'fantasy'].includes(filter)) {
+            filtered = catalogue.filter(t => t.category === filter);
         } else if (filter !== 'all') {
             filtered = catalogue.filter(t => t.rarity === filter);
         }
