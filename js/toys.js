@@ -242,6 +242,117 @@ const TOY_CATALOGUE = [
     // 🐱 2. CAT COLLECTION (10 TOYS)
     // =========================================================================
     {
+        id: 'cat_nah',
+        category: 'cat',
+        name: 'The "NAH" Meme Cat',
+        rarity: 'legendary',
+        radius: 29,
+        color: '#fdfbf7',
+        accentColor: '#e07a38',
+        tagline: 'Huge teary eyes and an unmistakable viral attitude: NAH. 😾',
+        draw(ctx, r) {
+            ctx.save();
+            // Left Ear (Orange calico patch)
+            ctx.fillStyle = '#d97736';
+            ctx.strokeStyle = '#221408';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(-r * 0.8, -r * 0.2); ctx.lineTo(-r * 0.6, -r * 1.05); ctx.lineTo(-r * 0.1, -r * 0.6);
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+
+            // Right Ear (Black/dark grey calico patch)
+            ctx.fillStyle = '#2d2d38';
+            ctx.beginPath();
+            ctx.moveTo(r * 0.8, -r * 0.2); ctx.lineTo(r * 0.6, -r * 1.05); ctx.lineTo(r * 0.1, -r * 0.6);
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+
+            // Main Head (Fluffy white)
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#221408';
+            ctx.lineWidth = 2.8;
+            ctx.beginPath();
+            ctx.arc(0, 0, r * 0.95, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Calico Forehead Patches
+            ctx.fillStyle = '#d97736';
+            ctx.beginPath();
+            ctx.ellipse(-r * 0.35, -r * 0.35, r * 0.38, r * 0.3, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#2d2d38';
+            ctx.beginPath();
+            ctx.ellipse(r * 0.35, -r * 0.45, r * 0.3, r * 0.25, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Red Collar & Bell
+            ctx.fillStyle = '#e74c3c';
+            ctx.beginPath();
+            ctx.roundRect(-r * 0.55, r * 0.62, r * 1.1, r * 0.18, 4);
+            ctx.fill();
+
+            ctx.fillStyle = '#ffd700';
+            ctx.beginPath();
+            ctx.arc(0, r * 0.76, r * 0.1, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Pink Nose
+            ctx.fillStyle = '#ff8da1';
+            ctx.beginPath();
+            ctx.ellipse(0, r * 0.08, r * 0.12, r * 0.08, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Tiny cute mouth
+            ctx.strokeStyle = '#3e2723';
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.arc(-r * 0.08, r * 0.2, r * 0.08, 0.2, Math.PI - 0.2);
+            ctx.arc(r * 0.08, r * 0.2, r * 0.08, 0.2, Math.PI - 0.2);
+            ctx.stroke();
+
+            // HUGE Glistening Teary/Glassy Meme Eyes!
+            [-r * 0.38, r * 0.38].forEach((ex) => {
+                // Eye base
+                ctx.fillStyle = '#111116';
+                ctx.beginPath();
+                ctx.arc(ex, -r * 0.08, r * 0.26, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Glassy deep reflection gradient
+                const eyeGrad = ctx.createRadialGradient(ex - 2, -r * 0.08 - 2, 2, ex, -r * 0.08, r * 0.26);
+                eyeGrad.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
+                eyeGrad.addColorStop(0.35, 'rgba(70, 80, 110, 0.3)');
+                eyeGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = eyeGrad;
+                ctx.beginPath();
+                ctx.arc(ex, -r * 0.08, r * 0.26, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Giant White Glare Highlights (the iconic teary meme look!)
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(ex - r * 0.08, -r * 0.16, r * 0.09, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(ex + r * 0.09, -r * 0.02, r * 0.045, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Iconic "NAH" Meme Text Banner across bottom!
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 3.5;
+            ctx.font = '900 13px "Impact", "Arial Black", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.strokeText('NAH', 0, r * 0.42);
+            ctx.fillText('NAH', 0, r * 0.42);
+
+            ctx.restore();
+        }
+    },
+    {
         id: 'cat_calico',
         category: 'cat',
         name: 'Calico Kitten',

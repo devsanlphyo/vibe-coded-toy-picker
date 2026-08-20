@@ -253,6 +253,29 @@ class AudioManager {
         osc.stop(now + 0.18);
     }
 
+    playNahMew() {
+        if (!this.soundEnabled) return;
+        this.ensureContext();
+        const now = this.ctx.currentTime;
+
+        // Cute meme "mew~" / sad cat meow pitch slide
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(620, now);
+        osc.frequency.linearRampToValueAtTime(740, now + 0.1);
+        osc.frequency.exponentialRampToValueAtTime(380, now + 0.38);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.22, now + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+        osc.connect(gain);
+        gain.connect(this.sfxGain);
+        osc.start(now);
+        osc.stop(now + 0.38);
+    }
+
     playWobble() {
         if (!this.soundEnabled) return;
         this.ensureContext();

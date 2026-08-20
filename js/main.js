@@ -17,14 +17,15 @@
         audio = window.audioManager;
         collection = window.collectionManager;
 
-        // Initialize Physics & Claw with slip callback
+        // Initialize Physics & Claw with slip & miss callbacks
         physics = new PhysicsManager(canvas, onPrizeWon);
-        claw = new ClawController(physics.world, 65, 60, 550, onClawSlip);
+        claw = new ClawController(physics.world, 65, 60, 550, onClawSlip, onClawMiss);
 
-        // Setup Controls & UI Event Listeners
+        // Setup Controls, UI Event Listeners & Trending NAH Cat
         setupInputHandlers();
         setupUIButtons();
         updateTokenDisplay();
+        initNahCatCanvas();
 
         // Start Loop
         lastTime = performance.now();
@@ -261,8 +262,48 @@
         }
     }
 
+    let nahTimeout = null;
+
+    function initNahCatCanvas() {
+        const nahCanvas = document.getElementById('nahCatCanvas');
+        if (!nahCanvas) return;
+        const nCtx = nahCanvas.getContext('2d');
+        const nahToy = (window.TOY_CATALOGUE || []).find(t => t.id === 'cat_nah');
+        if (nahToy) {
+            nCtx.clearRect(0, 0, nahCanvas.width, nahCanvas.height);
+            nCtx.save();
+            nCtx.translate(nahCanvas.width / 2, nahCanvas.height / 2 - 4);
+            nahToy.draw(nCtx, 36);
+            nCtx.restore();
+        }
+    }
+
+    function showNahMemeReaction() {
+        const popup = document.getElementById('nahMemePopup');
+        if (!popup) return;
+
+        if (window.audioManager) {
+            window.audioManager.playNahMew();
+        }
+
+        popup.classList.remove('show');
+        void popup.offsetWidth; // Trigger reflow for smooth re-animation
+        popup.classList.add('show');
+
+        if (nahTimeout) clearTimeout(nahTimeout);
+        nahTimeout = setTimeout(() => {
+            popup.classList.remove('show');
+        }, 2200);
+    }
+
     function onClawSlip(reason) {
         showToast(`⚠️ ${reason}`);
+        showNahMemeReaction();
+    }
+
+    function onClawMiss() {
+        showToast(`😾 Missed! Watch sway & timing`);
+        showNahMemeReaction();
     }
 
     function showToast(msg) {

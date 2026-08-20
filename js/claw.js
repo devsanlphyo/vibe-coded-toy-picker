@@ -3,12 +3,13 @@
  * Features realistic arcade physics, dynamic sway momentum, alignment precision, and rarity-based grip slipping.
  */
 class ClawController {
-    constructor(world, chuteX = 65, topY = 60, maxY = 550, onSlipCallback = null) {
+    constructor(world, chuteX = 65, topY = 60, maxY = 550, onSlipCallback = null, onMissCallback = null) {
         this.world = world;
         this.chuteX = chuteX;
         this.topY = topY;
         this.maxY = maxY;
         this.onSlip = onSlipCallback;
+        this.onMiss = onMissCallback;
 
         // Current trolley & claw position
         this.x = 280;
@@ -198,6 +199,9 @@ class ClawController {
                         if (window.audioManager) {
                             window.audioManager.stopWinch();
                             window.audioManager.playClawOpen();
+                        }
+                        if (this.onMiss) {
+                            this.onMiss();
                         }
                     }
                 }

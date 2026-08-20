@@ -43,17 +43,18 @@ A charming web-based 2D Toy Picker claw crane game featuring authentic rigid-bod
 9. **Star Wizard Capybara (★★★)**: *Casts spells of infinite chillness with a starry wizard hat. 🧙‍♂️✨*
 10. **Boba Milk Tea Capybara (★★★)**: *Sipping brown sugar boba milk tea all day long. 🧋*
 
-### 🐱 2. Cat Collection (10 Toys)
-11. **Calico Kitten (★☆☆)**: *Classic tricolor calico with emerald eyes and whiskers. 🐱*
-12. **Chonky Orange Tabby (★☆☆)**: *100% fluff, 0% thoughts, 1000% love! 🐾*
-13. **Bread Toast Cat (★☆☆)**: *Stuck its head right through a slice of golden buttered toast! 🍞*
-14. **Midnight Witch Cat (★★☆)**: *Sleek black kitten with glowing gold eyes and purple bell collar. 🐈‍⬛*
-15. **Siamese Princess (★★☆)**: *Elegant chocolate-point mask with sparkling sapphire eyes. 💎*
-16. **Neko Salmon Sushi (★★☆)**: *White kitten wrapped in nori seaweed with salmon sashimi on top. 🍣*
-17. **Matcha Boba Cat (★★☆)**: *Pastel matcha cat enjoying cold boba tea with cat-shaped pearls. 🍵*
-18. **Cosmic Astro-Cat (★★★)**: *Explores the Milky Way in a glowing astronaut bubble helmet. 🚀🌌*
-19. **Shark Costume Kitty (★★★)**: *Ferociously cuddly kitten wearing a shark suit with teeth and fin! 🦈*
-20. **Sunflower Kitty (★★★)**: *Radiant golden kitten blooming with cheerful sunflower petals! 🌻*
+### 🐱 2. Cat Collection (11 Toys)
+11. **The "NAH" Meme Cat (★★★)**: *Huge teary eyes and an unmistakable viral attitude: NAH. 😾*
+12. **Calico Kitten (★☆☆)**: *Classic tricolor calico with emerald eyes and whiskers. 🐱*
+13. **Chonky Orange Tabby (★☆☆)**: *100% fluff, 0% thoughts, 1000% love! 🐾*
+14. **Bread Toast Cat (★☆☆)**: *Stuck its head right through a slice of golden buttered toast! 🍞*
+15. **Midnight Witch Cat (★★☆)**: *Sleek black kitten with glowing gold eyes and purple bell collar. 🐈‍⬛*
+16. **Siamese Princess (★★☆)**: *Elegant chocolate-point mask with sparkling sapphire eyes. 💎*
+17. **Neko Salmon Sushi (★★☆)**: *White kitten wrapped in nori seaweed with salmon sashimi on top. 🍣*
+18. **Matcha Boba Cat (★★☆)**: *Pastel matcha cat enjoying cold boba tea with cat-shaped pearls. 🍵*
+19. **Cosmic Astro-Cat (★★★)**: *Explores the Milky Way in a glowing astronaut bubble helmet. 🚀🌌*
+20. **Shark Costume Kitty (★★★)**: *Ferociously cuddly kitten wearing a shark suit with teeth and fin! 🦈*
+21. **Sunflower Kitty (★★★)**: *Radiant golden kitten blooming with cheerful sunflower petals! 🌻*
 
 ### 🐶 3. Dog & Puppy Collection (10 Toys)
 21. **Classic Shiba Inu (★☆☆)**: *Such fluff, very loyal, wow plushie! 🐕*

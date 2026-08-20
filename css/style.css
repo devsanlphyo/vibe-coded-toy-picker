@@ -334,6 +334,54 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Trending 'NAH' Cat Meme Reaction Popup */
+.nah-meme-popup {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.6) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 50;
+}
+
+.nah-meme-popup.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    animation: nahHeadShake 0.7s ease-in-out;
+}
+
+@keyframes nahHeadShake {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    20% { transform: scale(1.08) rotate(-10deg); }
+    40% { transform: scale(1.08) rotate(10deg); }
+    60% { transform: scale(1.04) rotate(-6deg); }
+    80% { transform: scale(1.02) rotate(5deg); }
+}
+
+.nah-meme-card {
+    background: rgba(22, 12, 7, 0.94);
+    border: 3px solid #ffd700;
+    border-radius: 18px;
+    padding: 8px 14px 10px 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.nah-caption {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 900;
+    letter-spacing: 2.5px;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 4px 8px rgba(0,0,0,0.9);
+    margin-top: -8px;
+}
+
 /* Keyboard hint bar */
 .keyboard-hints {
     margin-top: 10px;
