@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Cozy Toy Picker 🧸 2D Arcade Claw Machine</title>
+    <!-- PWA Web App Manifest & Meta -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3d2417">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Toy Picker">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+
     <link rel="stylesheet" href="css/style.css">
     <!-- Matter.js Physics Engine -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
@@ -65,6 +75,9 @@
                     </button>
                     <button id="soundToggle" class="arcade-btn util-btn">
                         🔊 Sound: ON
+                    </button>
+                    <button id="installAppBtn" class="arcade-btn util-btn install-btn hidden" title="Install as Progressive Web App">
+                        📲 Install App
                     </button>
                 </div>
 
@@ -137,5 +150,16 @@
     <script src="js/physics.js"></script>
     <script src="js/collection.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((reg) => console.log('[PWA] Service Worker registered with scope:', reg.scope))
+                    .catch((err) => console.warn('[PWA] Service Worker registration failed:', err));
+            });
+        }
+    </script>
 </body>
 </html>

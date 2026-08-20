@@ -161,6 +161,37 @@
             });
         }
 
+        // PWA Install Button Handling
+        let deferredPrompt = null;
+        const installAppBtn = document.getElementById('installAppBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installAppBtn) {
+                installAppBtn.classList.remove('hidden');
+            }
+        });
+
+        if (installAppBtn) {
+            installAppBtn.addEventListener('click', async () => {
+                if (!deferredPrompt) return;
+                audio.playClick();
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('[PWA] User accepted the install prompt');
+                    installAppBtn.classList.add('hidden');
+                }
+                deferredPrompt = null;
+            });
+        }
+
+        window.addEventListener('appinstalled', () => {
+            console.log('[PWA] Application was installed successfully');
+            if (installAppBtn) installAppBtn.classList.add('hidden');
+        });
+
         // Album Modal Handling
         const albumModal = document.getElementById('albumModal');
         const closeAlbumBtn = document.getElementById('closeAlbumBtn');

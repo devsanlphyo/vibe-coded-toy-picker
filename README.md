@@ -91,6 +91,16 @@ A charming web-based 2D Toy Picker claw crane game featuring authentic rigid-bod
 49. **Baby Fire Phoenix (★★★)**: *Warm golden flames and eternal starlight wings. 🔥🪶*
 50. **Celestial Star Axolotl (★★★)**: *Galactic stardust wings and glowing cosmos frills! 🌌✨*
 
+## 📱 Progressive Web App (PWA) & Offline Play
+
+Cozy Toy Picker is a full **Progressive Web App (PWA)**:
+- **Offline Capable**: Plays completely offline with cached vector graphics and zero-dependency Web Audio.
+- **Installable**:
+  - **Android (Chrome)**: Tap the **📲 Install App** button in the game or select *"Add to Home Screen"* from the browser menu.
+  - **iOS (Safari)**: Tap the Share button ⎘ and select *"Add to Home Screen"*.
+  - **Desktop (Chrome/Edge)**: Click the Install icon in the URL bar or click **📲 Install App**.
+- **Full Screen Standalone Mode**: Launches like a native app without browser URL bars.
+
 ## 🚀 How to Run
 
 Simply open `index.html` in any modern web browser (Chrome, Edge, Firefox, Safari) or serve with any local HTTP server:

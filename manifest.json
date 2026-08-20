@@ -1,0 +1,31 @@
+{
+  "name": "Cozy Toy Picker 🧸 2D Arcade Claw Machine",
+  "short_name": "Toy Picker",
+  "description": "A charming 2D arcade claw crane machine with 50 cute collectible plushies and realistic physics.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#170d09",
+  "theme_color": "#3d2417",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["games", "arcade", "entertainment"]
+}

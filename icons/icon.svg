@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4a2810"/>
+      <stop offset="70%" stop-color="#241308"/>
+      <stop offset="100%" stop-color="#140a04"/>
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe27a"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#aa8010"/>
+    </linearGradient>
+    <linearGradient id="blueShades" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Rounded Shield -->
+  <rect width="512" height="512" rx="110" fill="url(#bgGrad)"/>
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="url(#goldGrad)" stroke-width="12"/>
+
+  <!-- Top Arcade Crane Cable & Trolley -->
+  <rect x="236" y="24" width="40" height="30" rx="6" fill="#d4af37" stroke="#111" stroke-width="4"/>
+  <line x1="256" y1="54" x2="256" y2="130" stroke="#ffd700" stroke-width="8"/>
+  <circle cx="256" cy="130" r="16" fill="#ffd700" stroke="#111" stroke-width="4"/>
+
+  <!-- Crane Prongs Grabbing -->
+  <path d="M 244 130 Q 180 160 200 230" fill="none" stroke="#d4af37" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 268 130 Q 332 160 312 230" fill="none" stroke="#d4af37" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="200" cy="230" r="8" fill="#e74c3c"/>
+  <circle cx="312" cy="230" r="8" fill="#e74c3c"/>
+
+  <!-- Capybara Ears -->
+  <circle cx="150" cy="210" r="42" fill="#9c5825" stroke="#221408" stroke-width="8"/>
+  <circle cx="150" cy="210" r="20" fill="#3a1f0c"/>
+  <circle cx="362" cy="210" r="42" fill="#9c5825" stroke="#221408" stroke-width="8"/>
+  <circle cx="362" cy="210" r="20" fill="#3a1f0c"/>
+
+  <!-- Capybara Main Body/Head -->
+  <circle cx="256" cy="310" r="135" fill="#d8a873" stroke="#221408" stroke-width="10"/>
+
+  <!-- Muzzle -->
+  <ellipse cx="256" cy="340" rx="62" ry="54" fill="#b86629" stroke="#221408" stroke-width="8"/>
+  <path d="M 235 315 L 277 315 M 256 315 L 256 350 M 240 355 Q 256 370 272 355" fill="none" stroke="#181008" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Retro Blue Sunglasses -->
+  <path d="M 145 250 L 240 275 L 235 295 L 155 290 Z" fill="#18181b" stroke="#18181b" stroke-width="6"/>
+  <path d="M 367 250 L 272 275 L 277 295 L 357 290 Z" fill="#18181b" stroke="#18181b" stroke-width="6"/>
+  <line x1="238" y1="275" x2="274" y2="275" stroke="#18181b" stroke-width="10"/>
+  <path d="M 152 255 L 234 277 L 230 291 L 160 287 Z" fill="url(#blueShades)"/>
+  <path d="M 360 255 L 278 277 L 282 291 L 352 287 Z" fill="url(#blueShades)"/>
+  <line x1="175" y1="258" x2="190" y2="285" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+  <line x1="337" y1="258" x2="322" y2="285" stroke="#ffffff" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Double Thumbs Up 👍 👍 -->
+  <ellipse cx="145" cy="380" rx="20" ry="34" transform="rotate(-15 145 380)" fill="#a85f26" stroke="#221408" stroke-width="7"/>
+  <circle cx="150" cy="410" r="32" fill="#a85f26" stroke="#221408" stroke-width="7"/>
+  <ellipse cx="367" cy="380" rx="20" ry="34" transform="rotate(15 367 380)" fill="#a85f26" stroke="#221408" stroke-width="7"/>
+  <circle cx="362" cy="410" r="32" fill="#a85f26" stroke="#221408" stroke-width="7"/>
+
+  <!-- Sparkles -->
+  <polygon points="100,100 106,120 126,126 106,132 100,152 94,132 74,126 94,120" fill="#ffd700"/>
+  <polygon points="412,120 417,136 433,141 417,146 412,162 407,146 391,141 407,136" fill="#ffd700"/>
+</svg>

@@ -287,8 +287,24 @@ body {
     50% { box-shadow: 0 0 10px rgba(231, 76, 60, 0.9); }
 }
 
+.util-btn.install-btn {
+    background: linear-gradient(180deg, #8e44ad 0%, #5b2c6f 100%);
+    color: #f4ecf7;
+    border-color: #bb8fce;
+    animation: installGlow 2.5s infinite;
+}
+
+@keyframes installGlow {
+    0%, 100% { box-shadow: 0 2px 0 #120904, 0 0 5px rgba(142, 68, 173, 0.4); }
+    50% { box-shadow: 0 2px 0 #120904, 0 0 12px rgba(187, 143, 206, 0.9); }
+}
+
 .util-btn.muted {
     opacity: 0.6;
+}
+
+.hidden {
+    display: none !important;
 }
 
 /* Slip Toast Notification */
