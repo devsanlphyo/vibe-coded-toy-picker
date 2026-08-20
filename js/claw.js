@@ -16,8 +16,8 @@ class ClawController {
         this.targetX = 280;
 
         // Mechanics & constraints (Full horizontal reach across entire bin and chute)
-        this.minX = 60;
-        this.maxX = 514;
+        this.minX = 40;
+        this.maxX = 518;
         this.speedX = 3.8;
         this.dropSpeed = 3.4;
         this.liftSpeed = 2.6;
@@ -379,8 +379,20 @@ class ClawController {
     }
 
     draw(ctx) {
-        // 1. Draw top rail trolley
+        // 1. Draw top rail trolley & rolling wheels
         ctx.save();
+
+        // Wheels rolling on the track
+        ctx.fillStyle = '#4a2e0a';
+        ctx.strokeStyle = '#2b1604';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(this.x - 12, this.topY - 24, 4.5, 0, Math.PI * 2);
+        ctx.arc(this.x + 12, this.topY - 24, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Main Trolley Housing
         ctx.fillStyle = '#b8860b';
         ctx.strokeStyle = '#644117';
         ctx.lineWidth = 2;

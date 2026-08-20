@@ -442,17 +442,24 @@
         ctx.fillStyle = lampGlow;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Top Brass Crane Rail
+        // Top Brass Crane Rail spanning full cabinet width
         ctx.fillStyle = '#b8860b';
-        ctx.fillRect(20, 32, canvas.width - 40, 10);
+        ctx.fillRect(0, 32, canvas.width, 10);
         ctx.strokeStyle = '#5a3d16';
         ctx.lineWidth = 1.5;
-        ctx.strokeRect(20, 32, canvas.width - 40, 10);
+        ctx.strokeRect(0, 32, canvas.width, 10);
+
+        // Brass Wall Mount Brackets on left and right ends
+        ctx.fillStyle = '#d4af37';
+        ctx.fillRect(0, 28, 10, 18);
+        ctx.strokeRect(0, 28, 10, 18);
+        ctx.fillRect(canvas.width - 10, 28, 10, 18);
+        ctx.strokeRect(canvas.width - 10, 28, 10, 18);
 
         // Fairy string lights across top rail
         const bulbColors = ['#fffae6', '#ffd54f', '#ffcc80', '#ffe082'];
-        for (let x = 40; x <= canvas.width - 40; x += 36) {
-            const bulbCol = bulbColors[(x / 36) % bulbColors.length];
+        for (let x = 20; x <= canvas.width - 20; x += 32) {
+            const bulbCol = bulbColors[Math.floor(x / 32) % bulbColors.length];
             // Tiny glow halo
             ctx.fillStyle = 'rgba(255, 235, 150, 0.3)';
             ctx.beginPath();
